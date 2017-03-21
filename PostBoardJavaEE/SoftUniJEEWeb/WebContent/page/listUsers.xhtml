@@ -70,7 +70,19 @@
 					<h:outputText value=" #{user.postsCount}" />
 				</p:column>
 
-		
+		       <p:column exportable="false" styleClass="colType"
+					style="width:70px;">
+					<f:facet name="header">
+						<h:outputText value="Edit" />   <!-- h:outputText value="#{msgs.columns_actions}"  --> 
+					</f:facet>
+					<p:commandLink ajax="false" process="@this" immediate="true"
+						action="#{listUsersBean.editAction()}" id="editButton">
+						<f:param name="id" value="#{user.id}" />
+						<h:graphicImage value="/img/edit-icon.png"
+							title="#{msgs['button.edit']}" alt="#{msgs['button.edit']}"
+							width="20" height="20" />
+					</p:commandLink>
+				</p:column>
 
 			</p:dataTable>
 
