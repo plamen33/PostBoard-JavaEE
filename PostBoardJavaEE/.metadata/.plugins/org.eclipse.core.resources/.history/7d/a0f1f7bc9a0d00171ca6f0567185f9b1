@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<link href="#{application.contextPath}/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="#{application.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</h:head>
+<title>Soft Uni JEE</title>
+<body id="editBody">
+
+	<h:form styleClass="editForm">
+
+		<p:outputPanel styleClass="alert alert-danger errorPanel"
+			rendered="#{deleteUserBean.hasErrors()}">
+			<p:messages autoUpdate="false" id="deleteParamMessages"
+				globalOnly="false" styleClass="messagesStyle" />
+		</p:outputPanel>
+
+		<div class="col-md-3 editBox">
+			<h3 class="text-primary bold upper headPaddings">
+				<h:outputText value="#{msgs['delete.user.title']}" escape="false" />
+			</h3>
+                <div class="box-field" align="center">
+			    <label for="username">#{msgs['label.username']}</label>
+				   <h:outputText value="#{deletePostBean.post.username}" escape="false" />
+			    </div>
+				<br />
+				<div class="box-field">
+					<label for="firstName">#{msgs['label.firstName']}</label>
+					<h:outputText value="#{deletePostBean.post.firstName}" escape="false" />
+				</div>
+				<br />
+				<div class="box-field">
+					<label for="firstName">#{msgs['label.lastName']}</label>
+					<h:outputText value="#{deletePostBean.post.lastName}" escape="false" />
+				</div>
+				<br />
+				<div class="box-field">
+					<label for="firstName">#{msgs['label.email']}</label>
+					<h:outputText value="#{deletePostBean.post.email}" escape="false" />
+				</div>
+				<br />
+
+				<div class="box-field">
+					<p:commandButton ajax="false" id="deleteuserBtn"
+						styleClass="btn btn-primary deleteUserBtn"
+						value="#{msgs['button.delete']}"
+						action="#{deleteUserBean.deleteAction}">
+					</p:commandButton>
+
+			</div>
+
+		</div>
+	</h:form>
+</body>
+</html>
+
