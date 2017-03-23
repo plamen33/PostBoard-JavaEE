@@ -40,8 +40,9 @@ public class PostService implements PostServiceLocal {
 
     @Override
     public PostModel save(PostModel entity) {
-    	
-        entityManager.persist(entity);
+    	PostModel toSave = entityManager.merge(entityManager.find(PostModel.class, entity.getId()));
+    	entityManager.persist(toSave);
+    	//entityManager.persist(entity);
         return entity;
     }
 

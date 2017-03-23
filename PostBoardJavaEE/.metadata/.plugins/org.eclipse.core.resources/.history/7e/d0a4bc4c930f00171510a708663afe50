@@ -40,7 +40,6 @@ public class PostService implements PostServiceLocal {
 
     @Override
     public PostModel save(PostModel entity) {
-    	
         entityManager.persist(entity);
         return entity;
     }
