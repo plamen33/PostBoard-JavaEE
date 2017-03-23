@@ -32,7 +32,7 @@ public class PostService implements PostServiceLocal {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PostModel> getAllPostsforDisplay() {
-		String query = "select new PostModel(postmodel.id, postmodel.author, postmodel.title, postmodel.content, postmodel.date) from PostModel postmodel group by postmodel.id order by upper(postmodel.date) desc";
+		String query = "select new PostModel(postmodel.id, postmodel.author, postmodel.title, postmodel.content, postmodel.date) from PostModel postmodel group by postmodel.id order by upper(postmodel.title) asc";
 		Query q = entityManager.createQuery(query);
 
 		return q.getResultList();

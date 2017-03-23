@@ -34,6 +34,7 @@ public class CreatePostBean {
 	@EJB
 	UserServiceLocal userService;
 
+	private UserModel user;
 	
 	@EJB
 	PostServiceLocal postService;
@@ -53,9 +54,16 @@ public class CreatePostBean {
 
 		if (!validate()) {
 			return null;
-		}	
+		}
+		HttpSession session = request.getSession(true);
+	
+		String id = (String)session.getAttribute("id");
 		
-		UserModel user = (UserModel) GeneralUtils.getLoggedUser(request);
+		if(StringUtils.isNotBlank(id) && StringUtils.isNumeric(id)){
+			user = userService.findById(Long.valueOf(id));
+		}
+		
+		
 		post.setDate(new Date());
 		post.setAuthor(user);
 		postService.save(post);
