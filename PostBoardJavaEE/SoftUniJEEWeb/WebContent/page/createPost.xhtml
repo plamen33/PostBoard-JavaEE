@@ -26,7 +26,7 @@
 	
 		<div style="" class="col-md-3 editBox">
 			<h3 class="text-primary bold upper headPaddings">
-				<h:outputText value="Edit post" escape="false" />
+				<h:outputText value="#{msgs['create.post.title']}" escape="false" />
 			</h3>
 
 				<div class="box-field">
@@ -49,11 +49,13 @@
 				<br />
 			    <div class="box-field" align="center">
 			    <label for="content">Post Date: &nbsp;</label>
-				   <h:outputText value="#{createPostBean.post.date}" escape="false" />
+				   <h:outputText value="#{currentDate}" escape="false" >
+                       <f:convertDateTime pattern="yyyy-MM-dd" type="date" />
+                   </h:outputText>
 			    </div>
 			    <div class="box-field" align="center">
 			    <label for="content">Post Author: &nbsp;</label>
-				   <h:outputText value="#{createPostBean.post.author.firstName} #{createPostBean.post.author.lastName}" escape="false" />
+				   <h:outputText value="#{LOGGED_USER.firstName} #{LOGGED_USER.lastName}" escape="false" />
 			    </div>
 
 				<br />

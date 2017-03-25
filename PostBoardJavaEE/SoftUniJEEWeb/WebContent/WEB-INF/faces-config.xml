@@ -15,5 +15,11 @@
 		</resource-bundle>
 		<message-bundle>resources.application</message-bundle>
 	</application>
+	<managed-bean>
+		<description>This is to get the current date while in session</description>
+		<managed-bean-name>currentDate</managed-bean-name>
+		<managed-bean-class>java.util.Date</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

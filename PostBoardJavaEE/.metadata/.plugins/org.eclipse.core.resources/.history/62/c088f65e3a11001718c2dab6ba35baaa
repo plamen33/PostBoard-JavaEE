@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<link href="#{application.contextPath}/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="#{application.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	
+</h:head>
+<title>JavaEE Project</title>
+<body id="editBody">
+
+	<h:form styleClass="editForm">
+
+		<p:outputPanel styleClass="alert alert-danger errorPanel"
+			rendered="#{createPostBean.hasErrors()}">
+			<p:messages autoUpdate="false" id="editParamMessages"
+				globalOnly="false" styleClass="messagesStyle" />
+		</p:outputPanel>
+
+	
+		<div style="" class="col-md-3 editBox">
+			<h3 class="text-primary bold upper headPaddings">
+				<h:outputText value="Edit post" escape="false" />
+			</h3>
+
+				<div class="box-field">
+					<label for="title">Post title &nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<p:inputTextarea id="title" name="title" styleClass="editInput"
+						value="#{createPostBean.post.title}" required="true" cols="70" rows="1">
+						<f:validateLength maximum="4000" />
+					</p:inputTextarea>
+					<p:message for="title" />
+				</div>
+
+				<br />
+				<div class="box-field">
+					<label for="content">Post Content</label>
+					<p:inputTextarea cols="70" rows="10" id="content" name="content" styleClass="editInput"
+						value="#{createPostBean.post.content}" >
+						<f:validateLength maximum="4000" />
+					</p:inputTextarea>
+				</div>
+				<br />
+			    <div class="box-field" align="center">
+			    <label for="content">Post Date: &nbsp;</label>
+				   <h:outputText value="#{currentDate}" escape="false" />
+                       <f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+                   </h:outputText>
+			    </div>
+			    <div class="box-field" align="center">
+			    <label for="content">Post Author: &nbsp;</label>
+				   <h:outputText value="#{LOGGED_USER.username}" escape="false" />
+			    </div>
+
+				<br />
+
+				<div class="box-field">
+					<p:commandButton ajax="false" id="updatepostBtn"
+						styleClass="btn btn-primary createPostBtn"
+						value="#{msgs['button.create']}"
+						action="#{createPostBean.createAction}">
+					</p:commandButton>
+			    </div>
+			    <br />
+			    <input type="button" value="Back" onclick="location.href='listPosts.html'" />
+			    
+			
+			  
+			    
+                
+
+		</div>
+	</h:form>
+	
+	
+</body>
+</html>

@@ -33,7 +33,6 @@ public class CreatePostBean {
 	
 	@EJB
 	UserServiceLocal userService;
-
 	
 	@EJB
 	PostServiceLocal postService;
